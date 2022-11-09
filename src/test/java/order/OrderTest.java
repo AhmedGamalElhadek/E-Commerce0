@@ -4,11 +4,10 @@ import base.BaseTest;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class OrderTest extends BaseTest {
     @Test
-    public void testPlacingOrder(){
+    public void testPlacingOrder() {
         loginPage.enterUsername("rahulshettyacademy");
         loginPage.enterPassword("learning");
         loginPage.selectType();
@@ -16,13 +15,13 @@ public class OrderTest extends BaseTest {
         var homePage = loginPage.clickSign();
         homePage.addToCart();
 
-        var checkoutPage=homePage.clickCheckout();
-        assertEquals(checkoutPage.getAddedPhone(),"iphone X","Wrong Device");
-        assertEquals(checkoutPage.getPrice(),"₹. 100000","Wrong Price");
+        var checkoutPage = homePage.clickCheckout();
+        assertEquals(checkoutPage.getAddedPhone(), "iphone X", "Wrong Device");
+        assertEquals(checkoutPage.getPrice(), "₹. 100000", "Wrong Price");
 
-        var submitPage =checkoutPage.submitCheckout();
+        var submitPage = checkoutPage.submitCheckout();
         submitPage.setCountry("Egypt");
         submitPage.clickPurchase();
-        assertEquals(submitPage.submitMessage(),"Success!","invalid purchase");
+        assertEquals(submitPage.submitMessage(), "Success!", "invalid purchase");
     }
 }
